@@ -1,0 +1,1606 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblioteca Pública Digital - Inicio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Header Styles */
+        .header {
+            background-color: #fff;
+            border-bottom: 1px solid #e0e0e0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 40px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            text-decoration: none;
+            color: #000;
+            cursor: pointer;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background-color: #000;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 24px;
+        }
+
+        .top-nav-links {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+
+        .top-nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-size: 14px;
+            transition: color 0.3s;
+            cursor: pointer;
+        }
+
+        .top-nav-links a:hover {
+            color: #D0021B;
+        }
+
+        .btn-donate {
+            background-color: #D0021B;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s;
+            cursor: pointer;
+        }
+
+        .btn-donate:hover {
+            background-color: #b00118;
+        }
+
+        .main-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 40px;
+        }
+
+        .main-nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .main-nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-size: 15px;
+            font-weight: 500;
+            transition: color 0.3s;
+            cursor: pointer;
+        }
+
+        .main-nav-links a:hover {
+            color: #D0021B;
+        }
+
+        .search-btn {
+            background-color: transparent;
+            border: 1px solid #333;
+            padding: 8px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+
+        .search-btn:hover {
+            background-color: #333;
+            color: #fff;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 500px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #4facfe 75%, #00f2fe 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: #fff;
+            max-width: 800px;
+            padding: 0 20px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-tag {
+            font-size: 14px;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .hero-title {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero-description {
+            font-size: 18px;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .hero-btn {
+            display: inline-block;
+            background-color: #fff;
+            color: #333;
+            padding: 15px 40px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .hero-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(255,255,255,0.3);
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 60px 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-size: 32px;
+            font-weight: 700;
+            color: #D0021B;
+        }
+
+        .see-more {
+            text-decoration: none;
+            color: #D0021B;
+            border: 2px solid #D0021B;
+            padding: 10px 30px;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .see-more:hover {
+            background-color: #D0021B;
+            color: #fff;
+        }
+
+        /* Card Grid */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+            color: #333;
+            cursor: pointer;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 48px;
+        }
+
+        .card-content {
+            padding: 20px;
+        }
+
+        .card-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #000;
+        }
+
+        .card-description {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        /* Tabs Section */
+        .tabs-section {
+            background-color: #f9f9f9;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 40px;
+            border-bottom: 2px solid #e0e0e0;
+            flex-wrap: wrap;
+        }
+
+        .tab {
+            padding: 15px 25px;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #666;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .tab:hover,
+        .tab.active {
+            color: #D0021B;
+            border-bottom-color: #D0021B;
+        }
+
+        /* Event Cards */
+        .event-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .event-card {
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            text-decoration: none;
+            color: #333;
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+
+        .event-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .event-image {
+            width: 100%;
+            height: 180px;
+            background: linear-gradient(45deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .event-content {
+            padding: 20px;
+        }
+
+        .event-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .event-date {
+            font-size: 13px;
+            color: #D0021B;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .event-location {
+            font-size: 13px;
+            color: #666;
+        }
+
+        /* Staff Picks Section */
+        .staff-picks-section {
+            background-color: #D0021B;
+            color: #fff;
+        }
+
+        .staff-picks-section .section-title {
+            color: #fff;
+        }
+
+        .pick-card {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 30px;
+            color: #333;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .pick-quote {
+            font-size: 18px;
+            font-style: italic;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .pick-author {
+            font-size: 14px;
+            font-weight: 600;
+            color: #D0021B;
+        }
+
+        .pick-location {
+            font-size: 13px;
+            color: #666;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            animation: fadeIn 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background-color: #fff;
+            margin: 5% auto;
+            padding: 40px;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 600px;
+            position: relative;
+            animation: slideDown 0.3s;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .close {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            font-size: 28px;
+            font-weight: bold;
+            color: #aaa;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .close:hover {
+            color: #000;
+        }
+
+        .modal h2 {
+            color: #D0021B;
+            margin-bottom: 20px;
+        }
+
+        .modal p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        /* Search Modal */
+        .search-modal-content {
+            padding: 30px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 15px;
+            font-size: 18px;
+            border: 2px solid #e0e0e0;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            transition: border-color 0.3s;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: #D0021B;
+        }
+
+        .search-results {
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .search-result-item {
+            padding: 15px;
+            border-bottom: 1px solid #e0e0e0;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .search-result-item:hover {
+            background-color: #f9f9f9;
+        }
+
+        .search-result-title {
+            font-weight: 600;
+            color: #D0021B;
+            margin-bottom: 5px;
+        }
+
+        .search-result-desc {
+            font-size: 14px;
+            color: #666;
+        }
+
+        /* Form Styles */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 4px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #D0021B;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .btn-submit {
+            background-color: #D0021B;
+            color: #fff;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn-submit:hover {
+            background-color: #b00118;
+        }
+
+        /* Notification */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+            border-radius: 4px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            z-index: 3000;
+            display: none;
+            animation: slideInRight 0.3s;
+        }
+
+        @keyframes slideInRight {
+            from {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #1a1a1a;
+            color: #fff;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+            cursor: pointer;
+        }
+
+        .footer-links a:hover {
+            color: #D0021B;
+        }
+
+        .footer-text {
+            font-size: 13px;
+            color: #999;
+        }
+
+        /* Loading Spinner */
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #D0021B;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+            display: none;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .top-nav,
+            .main-nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .top-nav-links,
+            .main-nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero-title {
+                font-size: 32px;
+            }
+
+            .section {
+                padding: 40px 20px;
+            }
+
+            .card-grid,
+            .event-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-content {
+                width: 95%;
+                padding: 20px;
+                margin: 10% auto;
+            }
+        }
+
+        /* Scroll to top button */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #D0021B;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            transition: all 0.3s;
+            z-index: 1500;
+        }
+
+        .scroll-top:hover {
+            background-color: #b00118;
+            transform: scale(1.1);
+        }
+
+        .scroll-top.show {
+            display: flex;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="top-nav">
+            <a href="#" class="logo" onclick="scrollToTop()">
+                <div class="logo-icon">📚</div>
+                <div>
+                    <div style="font-size: 16px;">Biblioteca</div>
+                    <div style="font-size: 14px; font-weight: normal;">Pública Digital</div>
+                </div>
+            </a>
+            <nav class="top-nav-links">
+                <a onclick="openAccountModal()">Mi Cuenta</a>
+                <a onclick="openLocationsModal()">Ubicaciones</a>
+                <a onclick="openCardModal()">Obtener Tarjeta</a>
+                <a onclick="openUpdatesModal()">Actualizaciones</a>
+                <a onclick="openDonateModal()" class="btn-donate">Donar</a>
+                <a onclick="showNotification('Tienda próximamente disponible')">Tienda</a>
+            </nav>
+        </div>
+        <div class="main-nav">
+            <nav class="main-nav-links">
+                <a onclick="scrollToSection('spotlight')">Libros/Música/Películas</a>
+                <a onclick="scrollToSection('discover')">Investigación</a>
+                <a onclick="scrollToSection('discover')">Educación</a>
+                <a onclick="scrollToSection('events')">Eventos</a>
+                <a onclick="showNotification('Sección de comunidad en desarrollo')">Conectar</a>
+                <a onclick="openDonateModal()">Contribuir</a>
+                <a onclick="openHelpModal()">Ayuda</a>
+            </nav>
+            <button class="search-btn" onclick="openSearchModal()">🔍 Buscar</button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-tag">RECOMENDACIONES DE LA BIBLIOTECA</div>
+            <h1 class="hero-title">Los Mejores Libros de 2025</h1>
+            <p class="hero-description">Explora nuestra lista expertamente curada de las mejores lecturas nuevas, incluyendo títulos para adultos, niños y adolescentes. Descubre historias que te inspirarán y transformarán.</p>
+            <a class="hero-btn" onclick="scrollToSection('spotlight')">Explorar Ahora</a>
+        </div>
+    </section>
+
+    <!-- Spotlight Section -->
+    <section class="section" id="spotlight">
+        <div class="section-header">
+            <h2 class="section-title">Destacados</h2>
+            <a class="see-more" onclick="showNotification('Cargando más contenido destacado...')">VER MÁS . . .</a>
+        </div>
+        <div class="card-grid">
+            <div class="card" onclick="openInstantAccessModal()">
+                <div class="card-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); font-size: 32px; font-weight: bold;">
+                    📱
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">¡Acceso Instantáneo!</h3>
+                    <p class="card-description">Comienza a leer ahora mismo. Accede a nuestra colección premium de libros electrónicos sin tiempos de espera.</p>
+                </div>
+            </div>
+            <div class="card" onclick="openKidsModal()">
+                <div class="card-image" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                    🎨
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Los Mejores Libros para Pequeños de 2025</h3>
+                    <p class="card-description">Descubre las lecturas más emocionantes y educativas para los más jóvenes de la casa.</p>
+                </div>
+            </div>
+            <div class="card" onclick="openExhibitionModal()">
+                <div class="card-image" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                    🏛️
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Nueva Exhibición: 100 Años de Historia</h3>
+                    <p class="card-description">Celebra un siglo de cultura, conocimiento e historia con nuestra nueva exposición interactiva.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What's On Section -->
+    <section class="section tabs-section" id="events">
+        <div class="section-header">
+            <h2 class="section-title">Próximos Eventos</h2>
+            <a class="see-more" onclick="showNotification('Mostrando todos los eventos...')">VER MÁS . . .</a>
+        </div>
+        <div class="tabs">
+            <button class="tab active" onclick="switchTab(0, this)">CONVERSACIONES CON AUTORES</button>
+            <button class="tab" onclick="switchTab(1, this)">EXHIBICIONES</button>
+            <button class="tab" onclick="switchTab(2, this)">NIÑOS Y ADOLESCENTES</button>
+            <button class="tab" onclick="switchTab(3, this)">OTROS EVENTOS</button>
+        </div>
+        <div class="event-grid" id="eventGrid">
+            <!-- Events will be populated by JavaScript -->
+        </div>
+    </section>
+
+    <!-- Discover Section -->
+    <section class="section" id="discover">
+        <div class="section-header">
+            <h2 class="section-title">Descubre</h2>
+            <a class="see-more" onclick="showNotification('Explorando más recursos...')">VER MÁS . . .</a>
+        </div>
+        <div class="card-grid">
+            <div class="card" onclick="openCatalogModal()">
+                <div class="card-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                    📖
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Explora Nuestro Catálogo en Línea</h3>
+                    <p class="card-description">Busca entre millones de títulos disponibles en nuestra colección digital.</p>
+                </div>
+            </div>
+            <div class="card" onclick="openLearningModal()">
+                <div class="card-image" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                    🎓
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Recursos de Aprendizaje para Todas las Edades</h3>
+                    <p class="card-description">Materiales educativos, tutoriales y cursos para niños, adolescentes y educadores.</p>
+                </div>
+            </div>
+            <div class="card" onclick="openClassesModal()">
+                <div class="card-image" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                    👥
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Eventos y Clases para Todas las Edades</h3>
+                    <p class="card-description">Participa en nuestras actividades comunitarias, talleres y eventos especiales.</p>
+                </div>
+            </div>
+            <div class="card" onclick="openResearchModal()">
+                <div class="card-image" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">
+                    🔬
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Inicia tu Investigación</h3>
+                    <p class="card-description">Accede a bases de datos académicas, archivos históricos y recursos especializados.</p>
+                </div>
+            </div>
+            <div class="card" onclick="openCardModal()">
+                <div class="card-image" style="background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);">
+                    💳
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Obtén tu Tarjeta de Biblioteca Hoy</h3>
+                    <p class="card-description">Acceso gratuito a todos nuestros servicios, recursos digitales y eventos.</p>
+                </div>
+            </div>
+            <div class="card" onclick="openEbooksModal()">
+                <div class="card-image" style="background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);">
+                    📱
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">E-Books y Más</h3>
+                    <p class="card-description">Lee en cualquier lugar con nuestra colección digital de libros, audiolibros y revistas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Staff Picks Section -->
+    <section class="section staff-picks-section">
+        <div class="section-header">
+            <h2 class="section-title">Recomendaciones del Personal</h2>
+            <a class="see-more" style="border-color: #fff; color: #fff;" onclick="showNotification('Cargando más recomendaciones...')">VER MÁS . . .</a>
+        </div>
+        <div class="card-grid">
+            <div class="pick-card">
+                <p class="pick-quote">"Magistralmente escrito con un lenguaje vívido, esta novela explora el sentido de desplazamiento de un inmigrante entre su tierra natal y su país adoptivo. Una lectura profundamente conmovedora que resuena con la experiencia humana universal."</p>
+                <div class="pick-author">Ana Martínez</div>
+                <div class="pick-location">Biblioteca Central - Sección de Literatura</div>
+            </div>
+            <div class="pick-card">
+                <p class="pick-quote">"Ganador del Premio Pulitzer, este autor hace que la historia de la humanidad sea legible y fascinante, explicando la ciencia de una manera increíblemente accesible. Un libro que cambiará tu perspectiva sobre el mundo."</p>
+                <div class="pick-author">Carlos Rodríguez</div>
+                <div class="pick-location">Biblioteca Comunitaria - Sección de Ciencias</div>
+            </div>
+            <div class="pick-card">
+                <p class="pick-quote">"Una colección de ensayos hilarantes y honestos que capturan la experiencia moderna con humor y perspicacia. Perfecto para quienes buscan una lectura ligera pero significativa."</p>
+                <div class="pick-author">María González</div>
+                <div class="pick-location">Biblioteca Digital - Sección de Ensayos</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-links">
+            <a onclick="openAboutModal()">Acerca de</a>
+            <a onclick="openContactModal()">Contacto</a>
+            <a onclick="showNotification('Sección de carreras próximamente')">Carreras</a>
+            <a onclick="showNotification('Información de prensa disponible próximamente')">Prensa</a>
+            <a onclick="openPrivacyModal()">Privacidad</a>
+            <a onclick="openTermsModal()">Términos</a>
+            <a onclick="openAccessibilityModal()">Accesibilidad</a>
+        </div>
+        <p class="footer-text">© 2025 Biblioteca Pública Digital. Todos los derechos reservados. | Diseñado con ❤️ para la comunidad</p>
+    </footer>
+
+    <!-- Search Modal -->
+    <div id="searchModal" class="modal">
+        <div class="modal-content search-modal-content">
+            <span class="close" onclick="closeModal('searchModal')">&times;</span>
+            <h2>🔍 Buscar en el Catálogo</h2>
+            <input type="text" class="search-input" id="searchInput" placeholder="Buscar libros, autores, temas..." onkeyup="performSearch()">
+            <div class="spinner" id="searchSpinner"></div>
+            <div class="search-results" id="searchResults"></div>
+        </div>
+    </div>
+
+    <!-- Account Modal -->
+    <div id="accountModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('accountModal')">&times;</span>
+            <h2>👤 Iniciar Sesión</h2>
+            <form onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <label for="username">Usuario o Email:</label>
+                    <input type="text" id="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Contraseña:</label>
+                    <input type="password" id="password" required>
+                </div>
+                <button type="submit" class="btn-submit">Iniciar Sesión</button>
+            </form>
+            <p style="margin-top: 20px; text-align: center;">¿No tienes cuenta? <a href="#" style="color: #D0021B; font-weight: 600;" onclick="openCardModal()">Obtén tu tarjeta gratis</a></p>
+        </div>
+    </div>
+
+    <!-- Card Registration Modal -->
+    <div id="cardModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('cardModal')">&times;</span>
+            <h2>💳 Obtener Tarjeta de Biblioteca</h2>
+            <p>Obtén acceso gratuito a todos nuestros recursos digitales y físicos.</p>
+            <form onsubmit="handleCardRegistration(event)">
+                <div class="form-group">
+                    <label for="fullName">Nombre Completo:</label>
+                    <input type="text" id="fullName" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Teléfono:</label>
+                    <input type="tel" id="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="address">Dirección:</label>
+                    <textarea id="address" required></textarea>
+                </div>
+                <button type="submit" class="btn-submit">Solicitar Tarjeta</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Donate Modal -->
+    <div id="donateModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('donateModal')">&times;</span>
+            <h2>❤️ Apoya a la Biblioteca</h2>
+            <p>Tu donación ayuda a mantener nuestros servicios gratuitos y accesibles para toda la comunidad.</p>
+            <form onsubmit="handleDonation(event)">
+                <div class="form-group">
+                    <label for="donationAmount">Selecciona un monto:</label>
+                    <select id="donationAmount" required>
+                        <option value="">Seleccionar...</option>
+                        <option value="10">$10</option>
+                        <option value="25">$25</option>
+                        <option value="50">$50</option>
+                        <option value="100">$100</option>
+                        <option value="custom">Monto personalizado</option>
+                    </select>
+                </div>
+                <div class="form-group" id="customAmountGroup" style="display: none;">
+                    <label for="customAmount">Monto personalizado:</label>
+                    <input type="number" id="customAmount" min="1">
+                </div>
+                <div class="form-group">
+                    <label for="donorName">Nombre:</label>
+                    <input type="text" id="donorName" required>
+                </div>
+                <div class="form-group">
+                    <label for="donorEmail">Email:</label>
+                    <input type="email" id="donorEmail" required>
+                </div>
+                <button type="submit" class="btn-submit">Donar Ahora</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Generic Info Modals -->
+    <div id="infoModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('infoModal')">&times;</span>
+            <h2 id="infoModalTitle"></h2>
+            <div id="infoModalContent"></div>
+        </div>
+    </div>
+
+    <!-- Notification -->
+    <div id="notification" class="notification"></div>
+
+    <!-- Scroll to Top Button -->
+    <div class="scroll-top" id="scrollTop" onclick="scrollToTop()">
+        ↑
+    </div>
+
+    <script>
+        // Event data for different tabs
+        const eventData = {
+            0: [ // Author Talks
+                {
+                    title: "Conversación con Autores Destacados de 2025",
+                    date: "MIÉ, DIC 10 | 6:30 PM",
+                    location: "Biblioteca Central",
+                    gradient: "linear-gradient(45deg, #667eea 0%, #764ba2 100%)"
+                },
+                {
+                    title: "Presentación: Nuevas Voces Literarias",
+                    date: "JUE, DIC 11 | 7:00 PM",
+                    location: "Sala de Conferencias",
+                    gradient: "linear-gradient(45deg, #f093fb 0%, #f5576c 100%)"
+                },
+                {
+                    title: "Encuentro con Escritores Latinoamericanos",
+                    date: "VIE, DIC 12 | 6:00 PM",
+                    location: "Auditorio Principal",
+                    gradient: "linear-gradient(45deg, #4facfe 0%, #00f2fe 100%)"
+                },
+                {
+                    title: "Charla: El Futuro de la Literatura Digital",
+                    date: "SÁB, DIC 13 | 3:00 PM",
+                    location: "En Línea",
+                    gradient: "linear-gradient(45deg, #a8edea 0%, #fed6e3 100%)"
+                }
+            ],
+            1: [ // Exhibitions
+                {
+                    title: "100 Años de Historia Cultural",
+                    date: "PERMANENTE",
+                    location: "Sala de Exhibiciones",
+                    gradient: "linear-gradient(45deg, #667eea 0%, #764ba2 100%)"
+                },
+                {
+                    title: "Fotografía Documental Contemporánea",
+                    date: "HASTA ENE 15",
+                    location: "Galería Principal",
+                    gradient: "linear-gradient(45deg, #f093fb 0%, #f5576c 100%)"
+                },
+                {
+                    title: "Manuscritos Históricos",
+                    date: "HASTA FEB 28",
+                    location: "Sala de Archivos",
+                    gradient: "linear-gradient(45deg, #4facfe 0%, #00f2fe 100%)"
+                }
+            ],
+            2: [ // Kids & Teens
+                {
+                    title: "Taller de Escritura Creativa para Niños",
+                    date: "VIE, DIC 12 | 4:00 PM",
+                    location: "Sala Infantil",
+                    gradient: "linear-gradient(45deg, #667eea 0%, #764ba2 100%)"
+                },
+                {
+                    title: "Club de Lectura para Adolescentes",
+                    date: "SÁB, DIC 13 | 2:00 PM",
+                    location: "Biblioteca Juvenil",
+                    gradient: "linear-gradient(45deg, #f093fb 0%, #f5576c 100%)"
+                },
+                {
+                    title: "Hora del Cuento: Aventuras Mágicas",
+                    date: "DOM, DIC 14 | 11:00 AM",
+                    location: "Sala de Cuentos",
+                    gradient: "linear-gradient(45deg, #4facfe 0%, #00f2fe 100%)"
+                },
+                {
+                    title: "Taller de Arte y Libros Ilustrados",
+                    date: "DOM, DIC 14 | 3:00 PM",
+                    location: "Sala de Actividades",
+                    gradient: "linear-gradient(45deg, #a8edea 0%, #fed6e3 100%)"
+                }
+            ],
+            3: [ // Other Events
+                {
+                    title: "Club de Lectura: Clásicos Contemporáneos",
+                    date: "SÁB, DIC 13 | 2:00 PM",
+                    location: "Biblioteca Comunitaria",
+                    gradient: "linear-gradient(45deg, #667eea 0%, #764ba2 100%)"
+                },
+                {
+                    title: "Taller de Investigación Digital",
+                    date: "LUN, DIC 15 | 10:00 AM",
+                    location: "Sala de Computación",
+                    gradient: "linear-gradient(45deg, #f093fb 0%, #f5576c 100%)"
+                },
+                {
+                    title: "Cine y Literatura: Adaptaciones",
+                    date: "MAR, DIC 16 | 7:00 PM",
+                    location: "Sala de Proyecciones",
+                    gradient: "linear-gradient(45deg, #4facfe 0%, #00f2fe 100%)"
+                }
+            ]
+        };
+
+        // Sample search data
+        const searchData = [
+            { title: "Cien Años de Soledad", author: "Gabriel García Márquez", type: "Libro - Ficción" },
+            { title: "Sapiens: De animales a dioses", author: "Yuval Noah Harari", type: "Libro - No Ficción" },
+            { title: "La Casa de los Espíritus", author: "Isabel Allende", type: "Libro - Ficción" },
+            { title: "El Principito", author: "Antoine de Saint-Exupéry", type: "Libro - Infantil" },
+            { title: "1984", author: "George Orwell", type: "Libro - Ficción" },
+            { title: "Breve Historia del Tiempo", author: "Stephen Hawking", type: "Libro - Ciencia" },
+            { title: "Don Quijote de la Mancha", author: "Miguel de Cervantes", type: "Libro - Clásico" },
+            { title: "El Alquimista", author: "Paulo Coelho", type: "Libro - Ficción" }
+        ];
+
+        // Initialize events
+        loadEvents(0);
+
+        function loadEvents(tabIndex) {
+            const eventGrid = document.getElementById('eventGrid');
+            const events = eventData[tabIndex] || [];
+            
+            eventGrid.innerHTML = events.map(event => `
+                <div class="event-card" onclick="openEventModal('${event.title}', '${event.date}', '${event.location}')">
+                    <div class="event-image" style="background: ${event.gradient};"></div>
+                    <div class="event-content">
+                        <div class="event-date">${event.date}</div>
+                        <h3 class="event-title">${event.title}</h3>
+                        <p class="event-location">${event.location}</p>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function switchTab(index, element) {
+            // Remove active class from all tabs
+            document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+            // Add active class to clicked tab
+            element.classList.add('active');
+            // Load events for this tab
+            loadEvents(index);
+        }
+
+        // Modal functions
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'block';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+
+        function openSearchModal() {
+            openModal('searchModal');
+            document.getElementById('searchInput').focus();
+        }
+
+        function openAccountModal() {
+            openModal('accountModal');
+        }
+
+        function openCardModal() {
+            closeModal('accountModal');
+            openModal('cardModal');
+        }
+
+        function openDonateModal() {
+            openModal('donateModal');
+        }
+
+        // Search functionality
+        let searchTimeout;
+        function performSearch() {
+            clearTimeout(searchTimeout);
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const resultsDiv = document.getElementById('searchResults');
+            const spinner = document.getElementById('searchSpinner');
+            
+            if (query.length < 2) {
+                resultsDiv.innerHTML = '<p style="padding: 20px; text-align: center; color: #666;">Escribe al menos 2 caracteres para buscar...</p>';
+                return;
+            }
+            
+            spinner.style.display = 'block';
+            resultsDiv.innerHTML = '';
+            
+            searchTimeout = setTimeout(() => {
+                const results = searchData.filter(item => 
+                    item.title.toLowerCase().includes(query) || 
+                    item.author.toLowerCase().includes(query)
+                );
+                
+                spinner.style.display = 'none';
+                
+                if (results.length === 0) {
+                    resultsDiv.innerHTML = '<p style="padding: 20px; text-align: center; color: #666;">No se encontraron resultados.</p>';
+                } else {
+                    resultsDiv.innerHTML = results.map(item => `
+                        <div class="search-result-item" onclick="showNotification('Abriendo: ${item.title}')">
+                            <div class="search-result-title">${item.title}</div>
+                            <div class="search-result-desc">${item.author} - ${item.type}</div>
+                        </div>
+                    `).join('');
+                }
+            }, 500);
+        }
+
+        // Form handlers
+        function handleLogin(event) {
+            event.preventDefault();
+            const username = document.getElementById('username').value;
+            showNotification(`¡Bienvenido, ${username}!`);
+            closeModal('accountModal');
+            document.getElementById('username').value = '';
+            document.getElementById('password').value = '';
+        }
+
+        function handleCardRegistration(event) {
+            event.preventDefault();
+            const name = document.getElementById('fullName').value;
+            showNotification(`¡Solicitud enviada exitosamente, ${name}! Te contactaremos pronto.`);
+            closeModal('cardModal');
+            event.target.reset();
+        }
+
+        function handleDonation(event) {
+            event.preventDefault();
+            const amount = document.getElementById('donationAmount').value === 'custom' 
+                ? document.getElementById('customAmount').value 
+                : document.getElementById('donationAmount').value;
+            showNotification(`¡Gracias por tu donación de $${amount}! Tu apoyo es invaluable.`);
+            closeModal('donateModal');
+            event.target.reset();
+            document.getElementById('customAmountGroup').style.display = 'none';
+        }
+
+        // Show/hide custom amount field
+        document.addEventListener('DOMContentLoaded', function() {
+            const donationSelect = document.getElementById('donationAmount');
+            if (donationSelect) {
+                donationSelect.addEventListener('change', function() {
+                    const customGroup = document.getElementById('customAmountGroup');
+                    customGroup.style.display = this.value === 'custom' ? 'block' : 'none';
+                });
+            }
+        });
+
+        // Generic info modal
+        function showInfoModal(title, content) {
+            document.getElementById('infoModalTitle').textContent = title;
+            document.getElementById('infoModalContent').innerHTML = content;
+            openModal('infoModal');
+        }
+
+        // Specific modal openers
+        function openLocationsModal() {
+            showInfoModal('📍 Nuestras Ubicaciones', `
+                <p><strong>Biblioteca Central</strong><br>
+                Av. Principal 123, Ciudad<br>
+                Lun-Vie: 9:00 AM - 8:00 PM<br>
+                Sáb-Dom: 10:00 AM - 6:00 PM</p>
+                
+                <p><strong>Biblioteca Comunitaria Norte</strong><br>
+                Calle Norte 456, Ciudad<br>
+                Lun-Vie: 10:00 AM - 7:00 PM<br>
+                Sábados: 10:00 AM - 5:00 PM</p>
+                
+                <p><strong>Biblioteca Digital</strong><br>
+                Disponible 24/7 en línea</p>
+            `);
+        }
+
+        function openUpdatesModal() {
+            showInfoModal('📧 Actualizaciones', `
+                <p>Mantente informado sobre nuestros nuevos libros, eventos y servicios.</p>
+                <form onsubmit="handleNewsletterSubscription(event)">
+                    <div class="form-group">
+                        <label for="newsletterEmail">Email:</label>
+                        <input type="email" id="newsletterEmail" required>
+                    </div>
+                    <button type="submit" class="btn-submit">Suscribirse</button>
+                </form>
+            `);
+        }
+
+        function openHelpModal() {
+            showInfoModal('❓ Centro de Ayuda', `
+                <p><strong>¿Cómo podemos ayudarte?</strong></p>
+                <p>📞 Teléfono: (555) 123-4567<br>
+                📧 Email: ayuda@biblioteca.org<br>
+                💬 Chat en vivo: Disponible Lun-Vie 9AM-5PM</p>
+                
+                <p><strong>Preguntas Frecuentes:</strong></p>
+                <ul style="list-style: none; padding-left: 0;">
+                    <li style="margin: 10px 0;">• ¿Cómo obtengo una tarjeta?</li>
+                    <li style="margin: 10px 0;">• ¿Cómo accedo a libros digitales?</li>
+                    <li style="margin: 10px 0;">• ¿Cuál es la política de préstamos?</li>
+                    <li style="margin: 10px 0;">• ¿Cómo reservo una sala de estudio?</li>
+                </ul>
+            `);
+        }
+
+        function openInstantAccessModal() {
+            showInfoModal('📱 Acceso Instantáneo', `
+                <p>Accede inmediatamente a nuestra colección premium de libros electrónicos sin listas de espera.</p>
+                <p><strong>Incluye:</strong></p>
+                <ul style="list-style: none; padding-left: 0;">
+                    <li style="margin: 10px 0;">✓ Más de 50,000 títulos</li>
+                    <li style="margin: 10px 0;">✓ Nuevos lanzamientos cada semana</li>
+                    <li style="margin: 10px 0;">✓ Compatible con todos los dispositivos</li>
+                    <li style="margin: 10px 0;">✓ Sin límite de préstamos</li>
+                </ul>
+                <button class="btn-submit" onclick="showNotification('Redirigiendo a la plataforma...')">Comenzar Ahora</button>
+            `);
+        }
+
+        function openKidsModal() {
+            showInfoModal('🎨 Libros para Pequeños', `
+                <p>Descubre nuestra selección curada de los mejores libros infantiles de 2025.</p>
+                <p><strong>Categorías destacadas:</strong></p>
+                <ul style="list-style: none; padding-left: 0;">
+                    <li style="margin: 10px 0;">📚 Cuentos ilustrados</li>
+                    <li style="margin: 10px 0;">🔬 Ciencia para niños</li>
+                    <li style="margin: 10px 0;">🌍 Culturas del mundo</li>
+                    <li style="margin: 10px 0;">🎭 Teatro y poesía</li>
+                </ul>
+                <button class="btn-submit" onclick="showNotification('Explorando colección infantil...')">Ver Colección</button>
+            `);
+        }
+
+        function openExhibitionModal() {
+            showInfoModal('🏛️ Exhibición: 100 Años', `
+                <p>Celebra un siglo de historia cultural con nuestra exposición interactiva.</p>
+                <p><strong>Horarios de visita:</strong><br>
+                Martes a Domingo: 10:00 AM - 6:00 PM<br>
+                Entrada gratuita con tarjeta de biblioteca</p>
+                <p><strong>Tours guiados:</strong><br>
+                Sábados y Domingos a las 2:00 PM</p>
+                <button class="btn-submit" onclick="showNotification('Reservando tour...')">Reservar Tour</button>
+            `);
+        }
+
+        function openCatalogModal() {
+            showInfoModal('📖 Catálogo en Línea', `
+                <p>Busca entre millones de títulos en nuestra colección.</p>
+                <p><strong>Recursos disponibles:</strong></p>
+                <ul style="list-style: none; padding-left: 0;">
+                    <li style="margin: 10px 0;">• Libros físicos y digitales</li>
+                    <li style="margin: 10px 0;">• Revistas y periódicos</li>
+                    <li style="margin: 10px 0;">• Audiolibros</li>
+                    <li style="margin: 10px 0;">• Películas y documentales</li>
+                    <li style="margin: 10px 0;">• Música y partituras</li>
+                </ul>
+                <button class="btn-submit" onclick="openSearchModal(); closeModal('infoModal');">Buscar Ahora</button>
+            `);
+        }
+
+        function openLearningModal() {
+            showInfoModal('🎓 Recursos de Aprendizaje', `
+                <p>Materiales educativos para todas las edades y niveles.</p>
+                <p><strong>Disponible:</strong></p>
+                <ul style="list-style: none; padding-left: 0;">
+                    <li style="margin: 10px 0;">• Tutoriales en video</li>
+                    <li style="margin: 10px 0;">• Cursos en línea gratuitos</li>
+                    <li style="margin: 10px 0;">• Guías de estudio</li>
+                    <li style="margin: 10px 0;">• Recursos para educadores</li>
+                </ul>
+            `);
+        }
+
+        function openClassesModal() {
+            showInfoModal('👥 Eventos y Clases', `
+                <p>Participa en nuestras actividades comunitarias.</p>
+                <p><strong>Próximas actividades:</strong></p>
+                <ul style="list-style: none; padding-left: 0;">
+                    <li style="margin: 10px 0;">• Talleres de escritura</li>
+                    <li style="margin: 10px 0;">• Clubes de lectura</li>
+                    <li style="margin: 10px 0;">• Clases de idiomas</li>
+                    <li style="margin: 10px 0;">• Tecnología y computación</li>
+                </ul>
+                <button class="btn-submit" onclick="scrollToSection('events'); closeModal('infoModal');">Ver Calendario</button>
+            `);
+        }
+
+        function openResearchModal() {
+            showInfoModal('🔬 Centro de Investigación', `
+                <p>Accede a recursos académicos y bases de datos especializadas.</p>
+                <p><strong>Servicios:</strong></p>
+                <ul style="list-style: none; padding-left: 0;">
+                    <li style="margin: 10px 0;">• Bases de datos académicas</li>
+                    <li style="margin: 10px 0;">• Archivos históricos</li>
+                    <li style="margin: 10px 0;">• Asistencia de investigación</li>
+                    <li style="margin: 10px 0;">• Salas de estudio privadas</li>
+                </ul>
+            `);
+        }
+
+        function openEbooksModal() {
+            showInfoModal('📱 Biblioteca Digital', `
+                <p>Lee en cualquier lugar con nuestra colección digital.</p>
+                <p><strong>Formatos disponibles:</strong></p>
+                <ul style="list-style: none; padding-left: 0;">
+                    <li style="margin: 10px 0;">• E-books (EPUB, PDF)</li>
+                    <li style="margin: 10px 0;">• Audiolibros</li>
+                    <li style="margin: 10px 0;">• Revistas digitales</li>
+                    <li style="margin: 10px 0;">• Periódicos en línea</li>
+                </ul>
+                <p><strong>Aplicaciones compatibles:</strong><br>
+                iOS, Android, Kindle, Kobo</p>
+            `);
+        }
+
+        function openEventModal(title, date, location) {
+            showInfoModal('📅 ' + title, `
+                <p><strong>Fecha y hora:</strong><br>${date}</p>
+                <p><strong>Ubicación:</strong><br>${location}</p>
+                <p><strong>Descripción:</strong><br>
+                Únete a nosotros para este evento especial. La entrada es gratuita para miembros de la biblioteca.</p>
+                <button class="btn-submit" onclick="showNotification('¡Evento agregado a tu calendario!')">Agregar al Calendario</button>
+            `);
+        }
+
+        function openAboutModal() {
+            showInfoModal('ℹ️ Acerca de Nosotros', `
+                <p>La Biblioteca Pública Digital es un centro comunitario dedicado a promover la lectura, el aprendizaje y el acceso libre al conocimiento.</p>
+                <p><strong>Nuestra misión:</strong><br>
+                Proporcionar acceso gratuito y equitativo a recursos educativos, culturales y recreativos para toda la comunidad.</p>
+                <p><strong>Historia:</strong><br>
+                Fundada en 1925, hemos servido a la comunidad durante casi 100 años, adaptándonos constantemente a las necesidades cambiantes de nuestros usuarios.</p>
+            `);
+        }
+
+        function openContactModal() {
+            showInfoModal('📞 Contacto', `
+                <p><strong>Información de contacto:</strong></p>
+                <p>📍 Dirección: Av. Principal 123, Ciudad<br>
+                📞 Teléfono: (555) 123-4567<br>
+                📧 Email: info@biblioteca.org<br>
+                🌐 Web: www.biblioteca.org</p>
+                
+                <p><strong>Horario de atención:</strong><br>
+                Lunes a Viernes: 9:00 AM - 8:00 PM<br>
+                Sábados y Domingos: 10:00 AM - 6:00 PM</p>
+            `);
+        }
+
+        function openPrivacyModal() {
+            showInfoModal('🔒 Política de Privacidad', `
+                <p>Respetamos tu privacidad y protegemos tus datos personales.</p>
+                <p><strong>Recopilación de datos:</strong><br>
+                Solo recopilamos información necesaria para proporcionar nuestros servicios.</p>
+                <p><strong>Uso de datos:</strong><br>
+                Tus datos se utilizan únicamente para gestionar tu cuenta y mejorar nuestros servicios.</p>
+                <p><strong>Seguridad:</strong><br>
+                Implementamos medidas de seguridad robustas para proteger tu información.</p>
+            `);
+        }
+
+        function openTermsModal() {
+            showInfoModal('📋 Términos de Servicio', `
+                <p><strong>Uso de servicios:</strong><br>
+                Al utilizar nuestros servicios, aceptas cumplir con nuestras políticas y normas.</p>
+                <p><strong>Responsabilidades:</strong><br>
+                Los usuarios son responsables del cuidado de los materiales prestados.</p>
+                <p><strong>Política de préstamos:</strong><br>
+                • Libros: 21 días<br>
+                • DVDs: 7 días<br>
+                • Revistas: 14 días</p>
+            `);
+        }
+
+        function openAccessibilityModal() {
+            showInfoModal('♿ Accesibilidad', `
+                <p>Estamos comprometidos con hacer nuestros servicios accesibles para todos.</p>
+                <p><strong>Servicios disponibles:</strong></p>
+                <ul style="list-style: none; padding-left: 0;">
+                    <li style="margin: 10px 0;">• Audiolibros</li>
+                    <li style="margin: 10px 0;">• Libros en braille</li>
+                    <li style="margin: 10px 0;">• Texto de gran tamaño</li>
+                    <li style="margin: 10px 0;">• Asistencia personalizada</li>
+                    <li style="margin: 10px 0;">• Instalaciones accesibles</li>
+                </ul>
+            `);
+        }
+
+        function handleNewsletterSubscription(event) {
+            event.preventDefault();
+            const email = document.getElementById('newsletterEmail').value;
+            showNotification(`¡Suscripción exitosa! Enviaremos actualizaciones a ${email}`);
+            closeModal('infoModal');
+        }
+
+        // Notification system
+        function showNotification(message) {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.style.display = 'block';
+            
+            setTimeout(() => {
+                notification.style.display = 'none';
+            }, 3000);
+        }
+
+        // Scroll functions
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Show/hide scroll to top button
+        window.addEventListener('scroll', function() {
+            const scrollTop = document.getElementById('scrollTop');
+            if (window.pageYOffset > 300) {
+                scrollTop.classList.add('show');
+            } else {
+                scrollTop.classList.remove('show');
+            }
+        });
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = 'none';
+            }
+        }
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                document.querySelectorAll('.modal').forEach(modal => {
+                    modal.style.display = 'none';
+                });
+            }
+        });
+
+        // Smooth scroll for all anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Add loading animation on page load
+        window.addEventListener('load', function() {
+            document.body.style.opacity = '0';
+            setTimeout(() => {
+                document.body.style.transition = 'opacity 0.5s';
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+    </script>
+</body>
+</html>
